@@ -11,7 +11,7 @@ The course’s lectures were filmed in Fall 2016 at Harvard University and Yale 
 A summary of lectures appears below.
 
 | Week	  |					 |
-|---------|------------------|
+|:--------|:-----------------|
 | Week 0  | Scratch          |
 | Week 1  | C                |
 | Week 2  | Arrays           |
@@ -29,7 +29,7 @@ A summary of lectures appears below.
 A summary of problem sets appears below. CS50x does not have deadlines for problem sets. You are welcome to work on and submit them at your own pace. To be eligible for a verified certificate from edX, however, you must submit (and receive a score of at least 70% on) all problem sets by 31 December 2017.
 
 | Problem 	    | Set				| Language 	  |
-|---------------|-------------------|-------------|
+|:--------------|:------------------|:------------|
 | Problem Set 0 | Scratch			| Scratch 	  |
 | Problem Set 1 | C 				| C       	  |
 | Problem Set 2 | Crypto 			| C           |
