@@ -3,31 +3,31 @@
 #include <math.h>
 
 
-int main(void){
+int main(void) {
 	float change;
 	printf("O hai! ");
-	do{
+	do {
 		printf("How much change is owed?\n");
-		change=get_float();
-	}while(change<0);
-	
-	int remain = round(change*100);
-	int coins=0;
+		change = get_float();
+	} while (change < 0);
 
-	while(remain>0){
-		if(remain>=25){
-			remain-=25;
+	int remain = round(change * 100);
+	int coins = 0;
+
+	while (remain > 0) {
+		if (remain >= 25) {
+			remain -= 25;
 			coins++;
-		}else if(remain>=10){
-			remain-=10;
+		} else if (remain >= 10) {
+			remain -= 10;
 			coins++;
-		}else if(remain>=5){
-			remain-=5;
+		} else if (remain >= 5) {
+			remain -= 5;
 			coins++;
-		}else if(remain>=1){
-			remain-=1;
+		} else if (remain >= 1) {
+			remain -= 1;
 			coins++;
 		}
 	}
-	printf("%i\n",coins);
+	printf("%i\n", coins);
 }
