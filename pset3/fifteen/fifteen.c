@@ -172,7 +172,7 @@ void init(void)
      (i.e., the height and width of the board are even),
      the positions of tiles numbered 1 and 2 must be swapped.
     */
-    if ((d * d) % 2 == 0) { // actually only swap when d^2 is an even number
+    if (numTiles % 2 == 0) { // actually only swap when d^2 is an even number
         board[d - 1][d - 2] = 2; // the last second is [i][j-1] but i=[0, d-1], j = [0, d-1], so convert it to [d-1][d-2]
         board[d - 1][d - 3] = 1; // the last third
     }
@@ -201,7 +201,7 @@ void draw(void)
  * If tile borders empty space, moves tile and returns true, else
  * returns false.
  */
-bool move(int tile)
+bool move(int tile) // range (0,d^2-1]
 {
     // TODO
     // Check valid values of tile
@@ -225,7 +225,7 @@ bool move(int tile)
     if (board[row][col + 1] == 0 && (col + 1) < d) { // right side, remember to check boarder boundary issue, 
                                                     // the new moved tile should not exceed the boundary d, 
                                                     // so we check col + 1 < d
-        board[row][col + 1] = board[row][col]; // swap these two tile's value
+        board[row][col + 1]  = board[row][col]; // swap these two tile's value
         board[row][col] = 0;
         return true;
     }
