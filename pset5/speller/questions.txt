@@ -1,0 +1,68 @@
+0.  What is pneumonoultramicroscopicsilicovolcanoconiosis?
+
+    an invented long word said to mean a lung disease caused by inhaling very fine ash and sand dust.
+
+1.  According to its man page, what does getrusage do?
+
+    getrusage() returns resource usage measures for who, which can be one of the following:
+        RUSAGE_SELF
+            Return resource usage statistics for the calling process, which is the sum of resources used by all threads in the process.
+            
+2.  Per that same man page, how many members are in a variable of type struct rusage?
+
+    16 members:
+        The resource usages are returned in the structure pointed to by usage, which has the following form:
+               struct rusage {
+                   struct timeval ru_utime; /* user CPU time used */
+                   struct timeval ru_stime; /* system CPU time used */
+                   long   ru_maxrss;        /* maximum resident set size */
+                   long   ru_ixrss;         /* integral shared memory size */
+                   long   ru_idrss;         /* integral unshared data size */
+                   long   ru_isrss;         /* integral unshared stack size */
+                   long   ru_minflt;        /* page reclaims (soft page faults) */
+                   long   ru_majflt;        /* page faults (hard page faults) */
+                   long   ru_nswap;         /* swaps */
+                   long   ru_inblock;       /* block input operations */
+                   long   ru_oublock;       /* block output operations */
+                   long   ru_msgsnd;        /* IPC messages sent */
+                   long   ru_msgrcv;        /* IPC messages received */
+                   long   ru_nsignals;      /* signals received */
+                   long   ru_nvcsw;         /* voluntary context switches */
+                   long   ru_nivcsw;        /* involuntary context switches */
+               };
+               
+3.  Why do you think we pass before and after by reference (instead of by value) to calculate, even though we’re not changing their contents?
+
+    Because passing a pointer reference will avoid stack overflow issue.
+
+4.  Explain as precisely as possible, in a paragraph or more, how main goes about reading words from a file. In other words, convince us that you indeed understand how that function’s for loop works.
+
+    The key aspect of the for loop is the c = fgetc(fp) function call. 
+        
+    fgetc gets the next character (an unsigned char) from fp and advances the position indicator in fp until the end of the file (EOF) is reached. 
+            
+    As each character is received, it is put through an if(if)-elseif-elseif logical sequence. 
+    
+    Summarizing the sequence: 
+    1) If the character is an alphabetical character or an apostrophe that is not at index 0 of the word, the character is appended to the word array. 
+        
+    2) Else if the character is numerical, the word is ignored and we skip ahead to the next word (which is found after a space). 
+        
+    3) Else if we hit a space or punctuation, we must have found a whole word so we terminate the word by adding \0 to the word array.
+    
+5.  Why do you think we used fgetc to read each word’s characters one at a time rather than use fscanf with a format string like "%s" to read whole words at a time? 
+    Put another way, what problems might arise by relying on fscanf alone?
+    
+    fscanf read until white-space, but fgetc read line by line.
+
+6.  Why do you think we declared the parameters for check and load as const (which means "constant")?
+
+    const means that something is not modifiable, so a data object that is declared with const as a part of its type specification 
+    must not be assigned to in any way during the run of a program. 
+    
+    It is very likely that the definition of the object will contain an initializer, but this is not always the case. 
+    
+    For example, if you were accessing a hardware port at a fixed memory address and promised only to read from it, 
+    then it would be declared to be const but not initialized.
+
+    In this example, dictionary and text we are trying to read should be it a fixed memory address. We only read from it and not change it in our program.

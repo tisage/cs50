@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+# TODO
+import os
+import sys
+
+import helpers
+from analyzer import Analyzer
+from termcolor import colored
+
+def main():
+    # ensure proper usage
+    if len(sys.argv)!=2:
+        sys.exit("Usage: ./tweet @screen_name")
+    
+    # get tweets
+    # absolute paths to lists
+    positives = os.path.join(sys.path[0], "positive-words.txt")
+    negatives = os.path.join(sys.path[0], "negative-words.txt")
+    
+    # initialize Analyzer
+    analyzer = Analyzer(positives, negatives)
+    
+    # get screen_name from argument of command line, ignore '@'
+    screen_name=sys.argv[1].strip('@')
+    
+    # Query tweets from screen_name with Twitter API helpers.py
+    # 50 resent tweets
+    tweets = helpers.get_user_timeline(screen_name, 50)
+    
+    # check if successful
+    if tweets == None:
+        sys.exit("User is private or does not exist.")
+    
+    # analyze tweets
+    for tweet in tweets:
+        score = analyzer.analyze(tweet)
+        if score >0:
+            print(colored("{} {}".format(score, tweet), "green")) # prints the score and tweet with color format
+        elif score <0:
+            print(colored("{} {}".format(score, tweet), "red"))
+        else:
+            print(colored("{} {}".format(score, tweet), "yellow"))
+
+if __name__ == "__main__":
+    main()
