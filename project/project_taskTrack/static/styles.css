@@ -1,0 +1,77 @@
+.container
+{
+    /* center contents */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100%
+}
+
+/* colors for navbar */
+.navbar-default .navbar-brand .blue
+{
+    color: #537fbe;
+}
+.navbar-default .navbar-brand .red
+{
+    color: #ea433b;
+}
+.navbar-default .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+.navbar-default .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+main td
+{
+    /* center-align tables' cells */
+    text-align: center;
+    vertical-align: middle;
+}
+
+main th
+{
+    /* center-align tables' header */
+    text-align: center;
+    vertical-align: middle;
+
+}
+.jumbotron {
+    background-image: url("/static/img/jumbotron_corp.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 0 20px #000000;
+
+}
+.jumbotron h1{
+    color: #fff;
+}
+
+.jumbotron p{
+    color: #fff;
+    font-weight: bold;
+}
+
+
+.dropdown-menu {
+  min-width: 0px;
+}

@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    CS50 Finance Portfolio Index
+{% endblock %}
+
+{% block main %}
+ <table class="table table-striped">
+    <tr>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Shares</th>
+        <th>Price</th>
+        <th>TOTAL</th>
+    </tr>
+    {% for stock in stocks %}
+    <tr>
+        <td>{{stock.symbol}}</td>
+        <td>{{stock.name}}</td>
+        <td>{{stock.shares}}</td>
+        <td>{{stock.price}}</td>
+        <td>{{stock.total}}</td>
+    </tr>
+    {% endfor %}
+    
+    <tr>
+        <td>CASH</td>
+        <td></td><td></td><td></td>
+        <td>{{cash}}</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td></td>
+        <td>{{total}}</td>
+    </tr>
+ </table>
+
+<table class="table table-hover" style="width:30%">
+    <th>Summary</th><th></th>  
+    <tr>
+        <td>Initial Investment</td>
+        <td>{{initialInvestment}}</td>
+        
+    </tr>
+    <tr>
+        <td>Market Cap</td>
+        <td>{{marketCap}}</td>
+    </tr>
+    <tr>
+        <td>Capital Gain</td>
+        <td>{{capitalGain}}</td>
+    </tr>
+    <tr>
+        <td>Return on Investment (ROI)</td>
+        <td>{{roi}}%</td>
+    </tr>
+ </table>        
+{% endblock %}

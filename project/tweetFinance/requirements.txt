@@ -1,0 +1,8 @@
+nltk
+
+quandl
+
+termcolor
+
+twython
+np
